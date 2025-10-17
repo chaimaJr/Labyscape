@@ -12,7 +12,7 @@ public class HealthController : MonoBehaviour
     private PlayerController playerMovement;
     public GameObject gameOverMenu;
     private AudioController audioController;
-
+    private bool isDead = false; // Prevent multiple death triggers
 
     private void Awake()
     {
@@ -22,6 +22,8 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         playerHealth = 3;
+        // Get the PlayerController component
+        playerMovement = player.GetComponent<PlayerController>();
         UpdateHealth();
     }
 
@@ -35,8 +37,10 @@ public class HealthController : MonoBehaviour
             }
         }
 
-        if (playerHealth <= 0)
+        // Only trigger death once
+        if (playerHealth <= 0 && !isDead)
         {
+            isDead = true;
             StartCoroutine(DieAndRespawn());
         }
     }
@@ -44,13 +48,11 @@ public class HealthController : MonoBehaviour
     IEnumerator DieAndRespawn()
     {
         Die();
-        
+
         // Wait for the death animation to finish
         yield return new WaitForSeconds(2.5f);
-
         gameOverMenu.SetActive(true);
     }
-
 
     void Die()
     {
@@ -64,13 +66,15 @@ public class HealthController : MonoBehaviour
         // Stop player velocity
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         if (rb != null)
+        {
             rb.velocity = Vector2.zero;
+            rb.isKinematic = true; // Prevent physics from moving the player
+        }
 
         // Death animation
-        playerAnim.SetTrigger("isDead");  
+        playerAnim.SetTrigger("isDead");
         playerAnim.SetBool("isrunning", false);
+
         Debug.Log("Player died");
     }
-
-
 }

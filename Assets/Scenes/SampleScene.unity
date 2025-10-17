@@ -22678,8 +22678,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1597433711
-  m_SortingLayer: 2
+  m_SortingLayerID: 1667422795
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -317308286, guid: 443cca016551753429fb8d375c6a0be7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -22739,8 +22739,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.087424815, y: -0.54757166}
-  m_Size: {x: 1.1245874, y: 1.1458597}
+  m_Offset: {x: 0.087424815, y: -0.5359416}
+  m_Size: {x: 1.1245874, y: 1.1691198}
   m_Direction: 0
 --- !u!114 &840800672
 MonoBehaviour:
@@ -28371,14 +28371,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4264151, g: 0.4264151, b: 0.4264151, a: 0.972549}
+  m_Color: {r: 0.14509805, g: 0.07450981, b: 0.10196079, a: 0.88235295}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5d5f80f8242b9154b8abdf73cf409630, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
