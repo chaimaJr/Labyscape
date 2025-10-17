@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class CollideController : MonoBehaviour
 {
     public int keysNumber;
-
     public Image[] keys;
+    private AudioController audioController;
 
+    private void Awake()
+    {
+        audioController = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +54,9 @@ public class CollideController : MonoBehaviour
     {
         if (collision.CompareTag("Key"))
         {
+            // Sound
+            audioController.PlaySFX(audioController.keyCollected);
+
             collision.gameObject.SetActive(false);
             keysNumber++;
             UpdateKeyNumber();

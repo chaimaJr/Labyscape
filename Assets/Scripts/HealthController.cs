@@ -9,9 +9,15 @@ public class HealthController : MonoBehaviour
     public Image[] hearts;
     public Animator playerAnim;
     public GameObject player;
-    //public Transform respawnPoint;
     private PlayerController playerMovement;
     public GameObject gameOverMenu;
+    private AudioController audioController;
+
+
+    private void Awake()
+    {
+        audioController = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
+    }
 
     void Start()
     {
@@ -48,6 +54,9 @@ public class HealthController : MonoBehaviour
 
     void Die()
     {
+        // Sound
+        audioController.PlaySFX(audioController.gameOver);
+
         // Disable player movement
         if (playerMovement != null)
             playerMovement.enabled = false;
@@ -60,7 +69,7 @@ public class HealthController : MonoBehaviour
         // Death animation
         playerAnim.SetTrigger("isDead");  
         playerAnim.SetBool("isrunning", false);
-        Debug.Log("Player died!");
+        Debug.Log("Player died");
     }
 
 
